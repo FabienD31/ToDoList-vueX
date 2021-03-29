@@ -11,6 +11,13 @@
         <!--paramettre addTodo qui correspond au payload pour la version raccourcis-->
         Ajouter
       </button>
+      <button
+        @click="asyncAddTodo({ name: todo, done: false })"
+        class="btn btn-info"
+      >
+        <!--paramettre asyncAddTodo qui correspond au payload pour la version raccourcis-->
+        Ajouter asynchrone
+      </button>
     </div>
     <div class="card">
       <div class="card-header d-flex flex-row justify-content-between">
@@ -41,6 +48,7 @@
 import { mapState } from "vuex"; //Pour utiliser le state en version raccourci
 import { mapGetters } from "vuex"; // Pour utiliser les getters en version raccourcis
 import { mapMutations } from "vuex"; // Pour utiliser les mutations en version raccourcis
+import { mapActions } from "vuex"; // Pour utiliser les actions en version raccourcis
 export default {
   name: "app",
   data() {
@@ -78,6 +86,14 @@ export default {
   //Version raccourcis mutation
   methods: {
     ...mapMutations(["addTodo", "toogleTodo", "deleteTodo"]),
+
+    //Version complete actions
+    // asyncAddTodo(payload) {
+    // this.$store.dispatch('asyncAddTodo', payload);
+    //}
+    //Version raccourcis action
+    // a mettre dans les methods
+    ...mapActions(["asyncAddTodo"]),
   },
 };
 </script>
